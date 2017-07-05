@@ -4,6 +4,7 @@ Led::Led()
 {
 }
 
+// Constructeur paramétrer
 Led::Led(int redPin, int greenPin, int bluePin)
 {
 	pinRed = redPin;

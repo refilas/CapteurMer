@@ -41,7 +41,7 @@ Led ledRgb(LED_R, LED_V, LED_B);
 // L'adresse MAC du shield
 byte mac[] = { 0x90, 0xA2, 0xDA, 0x0E, 0xA5, 0x7E };
 // L'adresse IP que prendra le shield
-IPAddress ip(192, 168, 1, 200);
+IPAddress ip(192, 168, 0, 39);
 // L'objet qui nous servira a la communication
 EthernetClient client;
 // Le serveur à interroger
@@ -61,7 +61,7 @@ int test;
 
 void setup() {
   test = 0;
-  	// Ouverture de la liason s�rie
+  	// Ouverture de la liason série
 	Serial.begin(9600);
 
 	char erreur = 0;
@@ -85,7 +85,7 @@ void setup() {
 	pinMode(LED_B, OUTPUT);
 
 
-	// Augmentation de pr�cision de l entr� analogique en utilisant une tension de 2,56V au lieu de 5V
+	// Augmentation de précision de l entré analogique en utilisant une tension de 2,56V au lieu de 5V
 	analogReference(INTERNAL);
 
 	// Controle fonctionnel de la led RVB
@@ -98,7 +98,7 @@ void loop() {
           test++; // Debug
         }    
 
-	// Tableau contenant les mesures de turbidit�, on fais cinq mesures
+	// Tableau contenant les mesures de turbidité, on fais cinq mesures
 	int mesure[5];
 	int mesure_RGB[5];
 	int mesureCapteur[5];        
@@ -112,18 +112,18 @@ void loop() {
 		// Led RGB      
 		ledRgb.controleLed(255, 255, 255);
 
-		// Temps de r�ation de la photor�sistance
+		// Temps de r�ation de la photorésistance
 		delay(TEMPORISATION);
 
-		// Classement des donn�es dans les tableaux
+		// Classement des données dans les tableaux
 		mesure[i] = analogRead(PHOTORESISTANCE);
 		mesure_RGB[i] = analogRead(PHOTORESISTANCE_RGB);
 	}
 
-	// Affichage direct de la claret� de l eau uniquement pour test, le traitement de cette information sera g�rer par le serveur
+	// Affichage direct de la clareté de l eau uniquement pour test, le traitement de cette information sera gérer par le serveur
 	Traitement::resultat(mesure_RGB, 5);
 
-	// Affchage de la valeur de mesure pour le test, remplacer par l envoi en base de donn�es dans le futur
+	// Affchage de la valeur de mesure pour le test, remplacer par l envoi en base de données dans le futur
 	Serial.print("Moyenne led classique : ");
 	Serial.println(Traitement::moyenne(mesure, 5)); // On appelle la fonction permetant le calcul de la moyenne du tableau	
 	Serial.print("Moyenne led RGB : ");
