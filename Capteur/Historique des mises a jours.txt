@@ -1,0 +1,7 @@
+Version 0.4 alpha
+Ajout d un test au démarrage du bon fonctionnement matériel
+Approche POO
+Modification de la tension de référence analogique pour augmenter la précision
+
+Version 0.3 alpha
+Simplification du code et ajout d une commande de led RGB

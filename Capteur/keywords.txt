@@ -1,0 +1,6 @@
+#Affectation des couleurs pour la bibliotheque Led
+#Creer par Julien BOUCHET
+#Le 05/06/2016
+
+Led	KEYWORD1
+controleLed	KEYWORD2
